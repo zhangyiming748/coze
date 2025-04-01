@@ -2,12 +2,11 @@ name: Get Voice List Test
 
 on:
   workflow_dispatch:  # 允许手动触发
+#   schedule:
+#     - cron: '0 0 * * *'  # 每天运行一次
   push:
     branches:
       - master
-#   schedule:
-#     - cron: '0 0 * * *'  # 每天运行一次
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,9 +18,10 @@ jobs:
           go-version: '1.24.1'
       - name: Run Voice List Test
         env:
-          TOKEN: ${{ secrets.token }}
+          TOKEN: ${{ secrets.TOKEN }}
         run: |
           cd voice
+          echo $TOKEN
           go test -v -timeout 10h -run TestVoice
       - name: Upload Downloads
         uses: actions/upload-artifact@v4
