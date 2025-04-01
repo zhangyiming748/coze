@@ -27,10 +27,10 @@ jobs:
           VOICE_ID: ${{ github.event.inputs.voice_id }}
           TEXT: ${{ github.event.inputs.text }}
         run: |
-          go run main.go -tts -id "$VOICE_ID" -text "$TEXT"
+          go run main.go $VOICE_ID $TEXT
       - name: Upload Downloads
         uses: actions/upload-artifact@v4
         with:
           name: voice-downloads
-          path: downloads/
+          path: ${{ github.workspace }}
           retention-days: 7  # 保存7天
