@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: '1.24.1'
       - name: Run Voice List Test
@@ -21,7 +21,7 @@ jobs:
           cd voice
           go test -v -timeout 10h -run TestVoice
       - name: Upload Downloads
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: voice-downloads
           path: downloads/
