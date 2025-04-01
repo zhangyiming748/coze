@@ -1,0 +1,36 @@
+name: TTS
+
+on:
+  workflow_dispatch:
+    inputs:
+      voice_id:
+        description: '语音ID'
+        required: true
+        type: string
+      text:
+        description: '要转换的文本'
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.1'
+      - name: Run TTS
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          VOICE_ID: ${{ github.event.inputs.voice_id }}
+          TEXT: ${{ github.event.inputs.text }}
+        run: |
+          go run main.go -tts -id "$VOICE_ID" -text "$TEXT"
+      - name: Upload Downloads
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-downloads
+          path: downloads/
+          retention-days: 7  # 保存7天
