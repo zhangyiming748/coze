@@ -1,9 +1,14 @@
 package voice
 
 import (
+	"log"
+	"os"
 	"testing"
 )
-
+func init() {
+	env:=os.Getenv("token")
+	log.Println(env)
+}
 // go test -v -timeout 10h -run TestVoice
 func TestVoiceList(t *testing.T) {
 	GetVoiceList()
