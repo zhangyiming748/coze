@@ -1,13 +1,11 @@
 package voice
 
 import (
-	"log"
-	"os"
+	"coze/util"
 	"testing"
 )
 func init() {
-	env:=os.Getenv("token")
-	log.Println(env)
+	util.SetLog()
 }
 // go test -v -timeout 10h -run TestVoice
 func TestVoiceList(t *testing.T) {

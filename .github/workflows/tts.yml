@@ -42,4 +42,5 @@ jobs:
           name: voice-downloads
           path: |
             ${{ github.workspace }}/**/*.mp3
+            ${{ github.workspace }}/**/*.log
           retention-days: 7  # 保存7天
