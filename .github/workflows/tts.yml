@@ -7,10 +7,12 @@ on:
         description: '语音ID'
         required: true
         type: string
+        default: '7426720361733013513'
       text:
         description: '要转换的文本'
         required: true
         type: string
+        default: '这是一个调用扣子API的项目'
 
 jobs:
   tts:
@@ -32,5 +34,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: voice-downloads
-          path: ${{ github.workspace }}
+          path: |
+            ${{ github.workspace }}/**/*.mp3
           retention-days: 7  # 保存7天
