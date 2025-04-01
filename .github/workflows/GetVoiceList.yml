@@ -4,9 +4,9 @@ on:
   workflow_dispatch:  # 允许手动触发
 #   schedule:
 #     - cron: '0 0 * * *'  # 每天运行一次
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
 jobs:
   GetList:
     runs-on: ubuntu-latest
@@ -27,5 +27,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: voice-downloads
-          path: d${{ github.workspace }}/downloads/
+          path: d${{ github.workspace }}
           retention-days: 7  # 保存7天
