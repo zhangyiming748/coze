@@ -1,0 +1,7 @@
+{
+    "code": 4100,
+    "msg": "access_token required in the authorization header",
+    "detail": {
+        "logid": "20250401220552B7052C8BAA387BF776BB"
+    }
+}
