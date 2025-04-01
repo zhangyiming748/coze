@@ -13,6 +13,11 @@ on:
         required: true
         type: string
         default: '这是一个调用扣子API的项目'
+      speed:
+        description: '语速'
+        required: true
+        type: string
+        default: '1.1'
 
 jobs:
   tts:
@@ -28,8 +33,9 @@ jobs:
           TOKEN: ${{ secrets.TOKEN }}
           VOICE_ID: ${{ github.event.inputs.voice_id }}
           TEXT: ${{ github.event.inputs.text }}
+          SPEED: ${{ github.event.inputs.speed }}
         run: |
-          go run main.go $VOICE_ID $TEXT
+          go run main.go $VOICE_ID $TEXT $SPEED
       - name: Upload Downloads
         uses: actions/upload-artifact@v4
         with:

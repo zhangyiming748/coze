@@ -12,7 +12,7 @@ const (
 	TTS = "/audio/speech"
 )
 
-func GenerateAudio(voice_id,text string) {
+func GenerateAudio(voice_id,text,speed string) {
 	token := os.Getenv("TOKEN")
 	headers := map[string]string{
 		"Authorization": token,
@@ -22,7 +22,7 @@ func GenerateAudio(voice_id,text string) {
 		"input":           text,
 		"voice_id":        voice_id,
 		"response_format": "mp3",
-		"speed":           "1",
+		"speed":           speed,
 		"sample_rate":     "24000",
 	}
 	host := strings.Join([]string{constant.HOST, TTS}, "/")

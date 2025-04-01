@@ -8,10 +8,11 @@ import (
 
 func main() {
 	// 检查参数数量
-	if len(os.Args) < 3 {
-		log.Fatalf("请输入语音ID和文本")
+	if len(os.Args) < 4 {
+		log.Fatalf("请输入语音ID文本和语速")
 	}
 	id := os.Args[1]
 	text := os.Args[2]
-	voice.GenerateAudio(id, text)
+	speed := os.Args[3]
+	voice.GenerateAudio(id, text,speed)
 }
