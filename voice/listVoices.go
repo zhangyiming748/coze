@@ -60,7 +60,7 @@ func DownloadPreviewAudio(audioURL, fileName string) error {
 	return nil
 }
 
-func GetVoiceList() {
+func GetVoiceList(page string) {
 	token := os.Getenv("TOKEN")
 	headers := map[string]string{
 		"Authorization": token,
@@ -68,8 +68,8 @@ func GetVoiceList() {
 	}
 	date := map[string]string{
 		"filter_system_voice": "false",
-		"page_num":            "1",
-		"page_size":           "200",
+		"page_num":           page,
+		"page_size":           "100",
 	}
 	host := strings.Join([]string{constant.HOST, LIST}, "/")
 	out, err := util.HttpGet(headers, date, host)

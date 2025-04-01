@@ -11,7 +11,8 @@ func init() {
 }
 // go test -v -timeout 10h -run TestVoice
 func TestVoiceList(t *testing.T) {
-	GetVoiceList()
+	GetVoiceList("1")
+	GetVoiceList("2")
 }
 
 func TestGenerateAudio(t *testing.T) {
