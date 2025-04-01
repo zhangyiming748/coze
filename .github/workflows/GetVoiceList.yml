@@ -27,5 +27,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: voice-downloads
-          path: d${{ github.workspace }}
+          path: |
+            ${{ github.workspace }}/**/*.mp3
           retention-days: 7  # 保存7天
