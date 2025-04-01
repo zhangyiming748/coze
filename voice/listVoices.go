@@ -76,7 +76,7 @@ func GetVoiceList(page string) {
 	if err != nil {
 		log.Fatalf("http get 发生错误: %v\n", err)
 	}
-	log.Println(string(out))
+	log.Printf("http response : %v\n",string(out))
 	var voice Voice
 	err = json.Unmarshal(out, &voice)
 	if err != nil {
