@@ -35,7 +35,7 @@ jobs:
           TEXT: ${{ github.event.inputs.text }}
           SPEED: ${{ github.event.inputs.speed }}
         run: |
-          go run main.go $VOICE_ID $TEXT $SPEED
+          go run main.go ${VOICE_ID} ${TEXT} ${SPEED}
       - name: Upload Downloads
         uses: actions/upload-artifact@v4
         with:

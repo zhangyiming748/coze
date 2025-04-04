@@ -1,4 +1,5 @@
 .DS_Store
+*.log
 .idea
 *.mp3
 *.wav
@@ -31,3 +32,4 @@
 *.svi
 *.3gp2
 *.mxf
+speech.txt
