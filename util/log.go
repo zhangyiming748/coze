@@ -1,10 +1,10 @@
 package util
 
 import (
+	"github.com/zhangyiming748/lumberjack"
 	"io"
 	"log"
 	"os"
-	"github.com/zhangyiming748/lumberjack"
 )
 
 var logLocation string

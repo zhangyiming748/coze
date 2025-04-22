@@ -24,7 +24,7 @@ func HttpProxyFileUpload(file *multipart.FileHeader, fileKey string, addFields m
 	// 从文件读取数据，写入表单
 	srcFile, err := file.Open()
 	if err != nil {
-		log.Fatalf("Upload Create form file failed:%v\n",err)
+		log.Fatalf("Upload Create form file failed:%v\n", err)
 		return
 	}
 	defer srcFile.Close()
@@ -109,6 +109,8 @@ func HttpPostJsoDownload(addHeaders map[string]string, data interface{}, urlPath
 	resp, err := client.Do(req)
 	if err != nil {
 		return err
+	} else {
+		log.Printf("resp:%+v\n", resp)
 	}
 	defer func() {
 		if resp != nil {
@@ -191,14 +193,14 @@ func HttpProxyFileUploadCustom(file *multipart.FileHeader, fileKey, filename str
 	writer := multipart.NewWriter(buf)
 	formFile, err := writer.CreateFormFile(fileKey, filename)
 	if err != nil {
-		log.Fatalf("Upload Create form file failed:%v\n",err)
+		log.Fatalf("Upload Create form file failed:%v\n", err)
 		return
 	}
 
 	// 从文件读取数据，写入表单
 	srcFile, err := file.Open()
 	if err != nil {
-		log.Fatalf("Upload Create form file failed:%v\n",err)
+		log.Fatalf("Upload Create form file failed:%v\n", err)
 		return
 	}
 	defer srcFile.Close()
@@ -237,4 +239,3 @@ func HttpProxyFileUploadCustom(file *multipart.FileHeader, fileKey, filename str
 	body, _ = io.ReadAll(resp.Body)
 	return
 }
-

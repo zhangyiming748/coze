@@ -68,7 +68,7 @@ func GetVoiceList(page string) {
 	}
 	date := map[string]string{
 		"filter_system_voice": "false",
-		"page_num":           page,
+		"page_num":            page,
 		"page_size":           "100",
 	}
 	host := strings.Join([]string{constant.HOST, LIST}, "/")
@@ -76,7 +76,7 @@ func GetVoiceList(page string) {
 	if err != nil {
 		log.Fatalf("http get 发生错误: %v\n", err)
 	}
-	log.Printf("http response : %v\n",string(out))
+	log.Printf("http response : %v\n", string(out))
 	var voice Voice
 	err = json.Unmarshal(out, &voice)
 	if err != nil {
@@ -98,7 +98,7 @@ func GetVoiceList(page string) {
 		// 下载音频文件
 		if v.PreviewAudio != "" {
 			// 构建文件名
-			fileName := fmt.Sprintf("%v. %s.mp3", v.VoiceId,v.Name)
+			fileName := fmt.Sprintf("%v. %s.mp3", v.VoiceId, v.Name)
 			if err := DownloadPreviewAudio(v.PreviewAudio, fileName); err != nil {
 				log.Printf("下载音频失败: %v\n", err)
 			}
@@ -108,8 +108,8 @@ func GetVoiceList(page string) {
 }
 
 func formatTimestamp(timestamp int) string {
-    // 创建东八区时区对象
-    cst := time.FixedZone("CST", 8*3600)
-    // 转换时间戳并设置时区
-    return time.Unix(int64(timestamp), 0).In(cst).Format("2006-01-02 15:04:05")
+	// 创建东八区时区对象
+	cst := time.FixedZone("CST", 8*3600)
+	// 转换时间戳并设置时区
+	return time.Unix(int64(timestamp), 0).In(cst).Format("2006-01-02 15:04:05")
 }
